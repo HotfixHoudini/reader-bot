@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/HotfixHoudini/reader-bot/pkg/routers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
@@ -34,6 +35,7 @@ func Route() {
 		})
 	})
 	// Swagger docs route
+	routeRegister(r)
 
 	err := r.Run(fmt.Sprintf("%s:%s", "0.0.0.0", "8080"))
 
@@ -49,3 +51,9 @@ func Route() {
 
 }
 
+func routeRegister(router *gin.Engine) {
+
+	apiVersion := "api/v1"
+	routers.Greeting(router, apiVersion)
+
+}
