@@ -5,7 +5,9 @@ import (
 	"log"
 	"net/http"
 
+
 	"github.com/HotfixHoudini/reader-bot/pkg/routers"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
@@ -26,7 +28,7 @@ func Route() {
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "Weekly win telex integration",
+			"message": "Reader bot telex integration",
 		})
 	})
 	r.GET("/ping", func(c *gin.Context) {
@@ -52,8 +54,7 @@ func Route() {
 }
 
 func routeRegister(router *gin.Engine) {
-
-	apiVersion := "api/v1"
-	routers.Greeting(router, apiVersion)
+	routers.Greeting(router)
+	routers.Integration(router)
 
 }
